@@ -59,13 +59,10 @@ $.fn.tooltip = function ( options ) {
     // Boilerplate jQuery plugin code goes here
   });
   // All my plugin logic goes here
-  function Tooltip() {
-  };
-  Tooltip.prototype = {
-  };
+  function Tooltip() {};
+  Tooltip.prototype = {};
   //Default Options
-  $.fn.tooltip.options = {
-  };
+  $.fn.tooltip.options = {};
 }
               </code>
           </pre>
@@ -116,11 +113,9 @@ $.widget("an.example", {
     someOption: true
   },
   // Constructor
-  _create: function(internal) {
-  }
+  _create: function(internal) {}
   // Custom method we added to our plugin instance
-  customMethod: function() {
-  }
+  customMethod: function() {}
 });
               </code>
           </pre>
@@ -150,10 +145,36 @@ $.widget("an.example", {
         </li>
       </section>
       <section data-bespoke-state="pre-progress clean color cards" class="font">
-        <h2>Or...</h2>
+        <h2 data-bespoke-bullet>Let's Create Our First File!</h2>
+          <li data-bespoke-bullet>
+            <span class="bold">This file will hold our default options</span>
+            <pre>
+<code data-language="javascript">
+// options.js
+// ----------
+var example = example || {};
+example.options = {
+  someOption: true
+};
+              </code>
+          </pre>
+          </li>
       </section>
       <section data-bespoke-state="pre-progress clean color concave" class="font">
-        <h2>How about...</h2>
+        <h2 data-bespoke-bullet>Let's Create Our First File!</h2>
+          <li data-bespoke-bullet>
+            <span class="bold">This file will hold our plugin constructor function</span>
+            <pre>
+<code data-language="javascript">
+// _create.js
+// ----------
+var example = example || {};
+example._create = function() {
+  // Our constructor logic goes here
+};
+              </code>
+          </pre>
+          </li>
       </section>
       <section data-bespoke-state="pre-progress clean color concave" class="font">
         <h2>Concave?</h2>
