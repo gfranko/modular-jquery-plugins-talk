@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Modular jQuery Plugins</title>
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <article>
+      <section data-bespoke-state="pre-progress clean">
+        <h2 data-bespoke-bullet class="first-header">Modular jQuery Plugins</h2>
+        <div class="image-group">
+          <img src="imgs/jquery.png" alt="" title="jQuery">
+          <img src="imgs/jqueryui.png" alt="" title="jQueryUI Widget Factory">
+          <img src="imgs/constructionhat.png" alt="" title="jqfactory">
+          <img src="imgs/grunt.jpeg" alt="" title="Grunt">
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean" class="font no-color">
+        <img src="imgs/gregfranko.jpeg" alt="" title="Greg Franko" class="profilepic">
+        <h2 data-bespoke-bullet>Greg Franko</h2>
+        <div class="bullet-grouping">
+          <li data-bespoke-bullet><span class="bold">Day Job:</span> JavaScript Engineer at AddThis</li>
+          <li data-bespoke-bullet><span class="bold">Open Source:</span> BoilerplateMVC, jQuery plugins, etc</li>
+          <li data-bespoke-bullet><span class="bold">Author:</span> Dependency Managment w/ RequireJS</li>
+          <li data-bespoke-bullet><span class="bold">Speaker:</span> jQuery Portland!</li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color" class="font">
+        <h2 data-bespoke-bullet class="slide-header">What does Modular Mean to You?</h2>
+        <div class="bullet-grouping modular">
+          <li data-bespoke-bullet>Smaller Pieces</li>
+          <li data-bespoke-bullet>Limited Scope (does one thing and does it well)</li>
+          <li data-bespoke-bullet>Maintainable</li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color simple" class="font">
+        <h2 data-bespoke-bullet class="">Inspirations</h2>
+        <div class="inspiration-images">
+          <li data-bespoke-bullet>
+            <img src="imgs/nodejs.png" alt="" title="NodeJS and CommonJS">
+          </li>
+          <li data-bespoke-bullet>
+            <img src="imgs/requirejs.png" alt="" title="RequireJS">
+          </li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color simple" class="font">
+        <h2 data-bespoke-bullet class="smaller-header">How Does This Apply to jQuery Plugins?</h2>
+        <div class="inspiration-images">
+          <li data-bespoke-bullet>
+            <span class="bold">Typical jQuery Plugin:</span>
+            <pre>
+              <code data-language="javascript">
+// Adding the tooltip method to the jQuery prototype
+$.fn.tooltip = function ( options ) {
+  return this.each(function () {
+    // Boilerplate jQuery plugin code goes here
+  });
+  // All my plugin logic goes here
+  function Tooltip() {
+  };
+  Tooltip.prototype = {
+  };
+  //Default Options
+  $.fn.tooltip.options = {
+  };
+}
+              </code>
+          </pre>
+          </li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color simple" class="font">
+        <h2 data-bespoke-bullet class="slide-header">Is this bad?</h2>
+        <div class="bullet-grouping modular">
+          <li data-bespoke-bullet>For small plugins this will work fine</li>
+          <li data-bespoke-bullet>For medium to large plugins this is not maintainable</li>
+          <li data-bespoke-bullet>How can we make it maintainable?</li>
+          <li data-bespoke-bullet><span class="bold">Abstract the boilerplate</span></li>
+          <li data-bespoke-bullet><span class="bold">Assemble our plugin into independent pieces</span></li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color simple" class="font">
+        <h2 data-bespoke-bullet class="">Let the Refactor Begin!</h2>
+        <div class="inspiration-images">
+          <li data-bespoke-bullet>
+            We have tools to help us...
+          </li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color simple" class="font">
+        <img src="imgs/jqueryui.png" alt="" title="jQueryUI Widget Factory" class="float-left margin-left">
+        <h2 data-bespoke-bullet class="float-left margin-left">jQueryUI Widget Factory</h2>
+        <div class="bullet-grouping clear jquery-widget-factory">
+          <li data-bespoke-bullet>
+            Provides a consistent foundation and API
+          </li>
+          <li data-bespoke-bullet>
+            Removes jQuery plugin boilerplate code
+          </li>
+          <li data-bespoke-bullet>
+            Let's us create plugins using object literals
+          </li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color simple" class="font">
+        <h2 data-bespoke-bullet>Example Widget Factory Plugin</h2>
+          <li data-bespoke-bullet>
+            <pre>
+<code data-language="javascript">// Calling the jQueryUI Widget Factory Method
+$.widget("an.example", {
+  // These options will be used as defaults
+  options: {
+    someOption: true
+  },
+  // Constructor
+  _create: function(internal) {
+  }
+  // Custom method we added to our plugin instance
+  customMethod: function() {
+  }
+});
+              </code>
+          </pre>
+          </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+        <h2 data-bespoke-bullet>Calling Our Plugin</h2>
+        <li data-bespoke-bullet>
+          <span class="bold">The same as any other jQuery plugin</span>
+          <pre>
+            <code data-language="javascript">
+                $('.test').example();
+            </code>
+          </pre>
+        </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+        <h2 class="smaller-header">Let's Review The State Of Our Plugin</h2>
+        <li data-bespoke-bullet></li>
+        <li data-bespoke-bullet>
+        <div class="bold">What We Have Done So Far:</div>
+        Removed the jQuery plugin boilerplate  
+        </li>
+        <li data-bespoke-bullet>
+          <div class="bold">What We Still Need To Do:</div>
+            Separate our plugin into independent pieces
+        </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+        <h2>Or...</h2>
+      </section>
+      <section data-bespoke-state="pre-progress clean color concave" class="font">
+        <h2>How about...</h2>
+      </section>
+      <section data-bespoke-state="pre-progress clean color concave" class="font">
+        <h2>Concave?</h2>
+      </section>
+      <section data-bespoke-state="pre-progress clean color concave" class="font">
+        <h2>Or...</h2>
+      </section>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <h2>How about...</h2>
+      </section>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <h2>Coverflow?</h2>
+      </section>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <h2>Simple.</h2>
+      </section>
+      <section data-bespoke-state="pre-progress clean color simple" class="font">
+        <h2>Let's make a progress bar...</h2>
+      </section>
+      <section data-bespoke-state="pre-progress clean color simple" class="font">
+        <pre>
+          <code data-language="javascript">
+            bespoke.plugins.progress = function(deck) {
+              var progress = document.querySelector('#progress');
+              deck.on('activate', function(event) {
+                progress.style.width = ((event.index * 100) /(deck.slides.length - 1)) + '%';
+              });
+            };
+          </code>
+        </pre>
+      </section>
+      <section data-bespoke-state="clean color simple progress" class="font">
+        <h2>Whoosh.</h2>
+      </section>
+      <section data-bespoke-state="clean color simple progress" class="font">
+        <h2 data-bespoke-bullet>Bespoke.js Events</h2>
+        <ul>
+          <li data-bespoke-bullet>activate</li>
+          <li data-bespoke-bullet>deactivate</li>
+          <li data-bespoke-bullet>next</li>
+          <li data-bespoke-bullet>prev</li>
+          <li data-bespoke-bullet>slide</li>
+        </ul>
+      </section>
+      <section data-bespoke-state="clean color simple progress" class="font">
+        <h2 data-bespoke-bullet>Robust Plugin System</h2>
+        <ul>
+          <li data-bespoke-bullet>Return false to cancel events</li>
+          <li data-bespoke-bullet>Write intercepting plugins</li>
+        </ul>
+      </section>
+      <section data-bespoke-state="clean color simple progress" class="font">
+        <h2>Lessons</h2>
+      </section>
+      <section data-bespoke-state="clean color simple progress" class="font">
+        <h2 data-bespoke-bullet>Writing a library?</h2>
+        <ul>
+          <li data-bespoke-bullet>Tiny, extendable core</li>
+          <li data-bespoke-bullet>Plugins, even for common functionality</li>
+          <li data-bespoke-bullet>Modern browser features + polyfills</li>
+        </ul>
+      </section>
+      <section data-bespoke-state="clean color simple progress" class="font">
+        <h2 data-bespoke-bullet>Making a presentation?</h2>
+        <h3 data-bespoke-bullet>Do it yourself.</h3>
+      </section>
+      <section data-bespoke-state="clean color simple progress" class="font">
+        <img src="img/profile.jpg">
+        <h2>@markdalgleish</h2>
+        <h3>bit.ly/diyslides</h3>
+      </section>
+    </article>
+    <script src="js/bespoke.min.js"></script>
+    <script src="js/bespoke-plugins.js"></script>
+    <script src="js/prefixfree.min.js"></script>
+    <script src="js/rainbow.min.js"></script>
+    <script src="js/js.js"></script>
+  </body>
+</html>
