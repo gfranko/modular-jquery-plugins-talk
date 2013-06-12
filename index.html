@@ -185,6 +185,16 @@ example._create = function() {
           </li>
       </section>
       <section data-bespoke-state="pre-progress clean color concave" class="font">
+        <h2>Can you see the pattern?</h2>
+        <li data-bespoke-bullet></li>
+        <li data-bespoke-bullet>
+          It is a bit overkill to create a new file for each method
+        </li>
+        <li data-bespoke-bullet>
+          <span class="bold">Make logical modular design decisions</span>
+        </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color concave" class="font">
         <h2 data-bespoke-bullet>Once We Are Done Decoupling...</h2>
           <li data-bespoke-bullet>
             <span class="bold">We create our plugin!</span>
@@ -197,16 +207,6 @@ $.widget("an.example", example);
               </code>
           </pre>
           </li>
-      </section>
-      <section data-bespoke-state="pre-progress clean color concave" class="font">
-        <h2>Can you see the pattern?</h2>
-        <li data-bespoke-bullet></li>
-        <li data-bespoke-bullet>
-          It is a bit overkill to create a new file for each method
-        </li>
-        <li data-bespoke-bullet>
-          <span class="bold">Make logical modular design decisions</span>
-        </li>
       </section>
       <section data-bespoke-state="pre-progress clean color cards" class="font">
         <h2 class="smaller-header slide-header">Let's Review The State Of Our Plugin</h2>
@@ -257,41 +257,123 @@ $.widget("an.example", example);
         </div>
       </section>
       <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <h2 data-bespoke-bullet>Example jqfactory Plugin</h2>
+          <li data-bespoke-bullet>
+            <pre class="jqfactory-example">
+<code data-language="javascript">// Calling the jqfactory Method
+   $.jqfactory('person.greg', {
+        // Default plugin options
+        options: {
+            occupation: 'JavaScript Engineer'
+        },
+        // Plugin Constructor
+        _create: function() {},
+        // Dom manipulation goes here
+        _render: function() {},
+        // Plugin event bindings
+        _events: {
+            'click': function() {}
+        },
+        // All event listeners are now bound
+        _postevents: function() {}
+    });
+              </code>
+          </pre>
+          </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
         <h2 data-bespoke-bullet class="smaller-header slide-header">We Won't Be Reviewing jqfactory In Detail...</h2>
         <li data-bespoke-bullet>But if you are interested in it:</li>
-        <li data-bespoke-bullet>Ask me about it in the Q&A!</li>
+        <li data-bespoke-bullet>Ask me about it in the Q&A</li>
         <li data-bespoke-bullet><span class="bold">Now back to our plugin!</span></li>
       </section>
       <section data-bespoke-state="pre-progress clean color coverflow" class="font">
-        <h2 class="smaller-header slide-header">Plugin Build Process</h2>
-        <li data-bespoke-bullet></li>
-        <li data-bespoke-bullet><span class="bold">Are There Alternatives To The Widget Factory?</span></li>
-        <li data-bespoke-bullet>
-          Now that you mention it...
-        </li>
-        <li data-bespoke-bullet>
-          I would like to officially release <span class="bold">jqfactory</span>
-        </li>
+        <h2 data-bespoke-bullet class="">Plugin Build Process</h2>
+        <div class="inspiration-images">
+          <li data-bespoke-bullet>
+            With Grunt.js!
+          </li>
+        </div>
       </section>
-      <section data-bespoke-state="pre-progress clean color simple" class="font">
-        <h2>Let's make a progress bar...</h2>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <img src="imgs/grunt.png" alt="" title="Grunt" class="float-left margin-left grunt-icon">
+        <h2 data-bespoke-bullet class="float-left margin-left">Grunt</h2>
+        <div class="bullet-grouping clear jquery-widget-factory">
+          <li data-bespoke-bullet>
+            JavaScript (Node.js) Task Runner
+          </li>
+          <li data-bespoke-bullet>
+            Perfect for automating repetitive tasks
+          </li>
+          <li data-bespoke-bullet>
+            A huge plugin ecosystem
+          </li>
+        </div>
       </section>
-      <section data-bespoke-state="pre-progress clean color simple" class="font">
-        <pre>
-          <code data-language="javascript">
-            bespoke.plugins.progress = function(deck) {
-              var progress = document.querySelector('#progress');
-              deck.on('activate', function(event) {
-                progress.style.width = ((event.index * 100) /(deck.slides.length - 1)) + '%';
-              });
-            };
-          </code>
-        </pre>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <h2 data-bespoke-bullet>Creating Our Gruntfile Part 1</h2>
+          <li data-bespoke-bullet>
+            <pre class="jqfactory-example">
+<code data-language="javascript">
+// Gruntfile.js
+module.exports = function(grunt) {
+  var baseFilePath = 'src/js/',
+    fileToBuild = baseFilePath + 'jquery.customBuild.js';
+  // Our Grunt configuration
+  grunt.initConfig({
+    // The Grunt concat plugin will be helping us out
+    concat: {
+      dist: {
+        src: '<%= customBuild.files %>',
+        dest: fileToBuild
+      }
+    }
+  });
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  // Our custom task will go here next
+}
+              </code>
+          </pre>
+          </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <h2 data-bespoke-bullet>Creating Our Gruntfile Part 2</h2>
+          <li data-bespoke-bullet>
+            <pre class="grunt-example">
+<code data-language="javascript">
+// Registers a default Grunt Task
+grunt.registerTask('customBuild', 'customBuild task', function() {
+  var defaultFiles = ['options', '_create', '_plugin', 'customMethod'],
+    args = this.args, customFiles = [], index, i = -1;
+
+  // Loops through and excludes any file that was passed
+  if(args.length) {
+    while(++i < args.length) {
+      index = defaultFiles.indexOf(args[i]);
+      if(index !== -1) defaultFiles.splice(index, 1);
+    }
+  }
+  // Makes sure that each passed file has the correct file path
+  customFiles = defaultFiles.map(function(currentFile) {
+    return baseFilePath + currentFile + '.js';
+  });
+  // Sets a Grunt configuration variable
+  grunt.config.set('customBuild.files', customFiles);
+  // Run's the Grunt concat plugin
+  grunt.task.run('concat');
+});
+              </code>
+          </pre>
+          </li>
       </section>
       <section data-bespoke-state="clean color simple progress" class="font">
-        <img src="img/profile.jpg">
-        <h2>@markdalgleish</h2>
-        <h3>bit.ly/diyslides</h3>
+        <h2 data-bespoke-bullet>Thank You!</h2>
+        <li data-bespoke-bullet>
+          <span class="bold">Github: </span> @gfranko
+        </li>
+        <li data-bespoke-bullet>
+          <span class="bold">Twitter: </span> @gregfranko
+        </li>
       </section>
     </article>
     <script src="js/bespoke.min.js"></script>

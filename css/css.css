@@ -497,3 +497,15 @@ div.inspiration-images img {
 article  pre {
   line-height: 34px;
 }
+.jqfactory-example {
+  font-size: 18px;
+  line-height: 26px;
+}
+.grunt-example {
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0 24px 40px;
+}
+.grunt-icon {
+  width: 175px;
+}
