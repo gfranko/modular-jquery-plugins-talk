@@ -242,7 +242,7 @@ article.clean h2 {
   padding-bottom: 26px;
 }
 article.clean h2.smaller-header {
-  font-size: 36px;
+  font-size: 36px !important;
   line-height: 36px;
   margin-top: 20px;
 }
@@ -471,7 +471,7 @@ img.profilepic {
   margin-top: -100px;
 }
 .slide-header {
-  margin-top: -125px;
+  margin-top: -125px !important;
 }
 div.inspiration-images img {
   width: auto;
