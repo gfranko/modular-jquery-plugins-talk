@@ -58,8 +58,9 @@ $.fn.tooltip = function ( options ) {
   return this.each(function () {
     // Boilerplate jQuery plugin code goes here
   });
-  // All my plugin logic goes here
+  // Plugin Constructor
   function Tooltip() {};
+  // All my plugin logic goes here
   Tooltip.prototype = {};
   //Default Options
   $.fn.tooltip.options = {};
@@ -161,7 +162,7 @@ example.options = {
           </li>
       </section>
       <section data-bespoke-state="pre-progress clean color concave" class="font">
-        <h2 data-bespoke-bullet>Let's Create Our First File!</h2>
+        <h2 data-bespoke-bullet>On To The Next File!</h2>
           <li data-bespoke-bullet>
             <span class="bold">This file will hold our plugin constructor function</span>
             <pre>
@@ -177,13 +178,56 @@ example._create = function() {
           </li>
       </section>
       <section data-bespoke-state="pre-progress clean color concave" class="font">
-        <h2>Concave?</h2>
+        <h2 data-bespoke-bullet>Once We Are Done Decoupling...</h2>
+          <li data-bespoke-bullet>
+            <span class="bold">We create our plugin!</span>
+            <pre>
+<code data-language="javascript">
+// _plugin.js
+// ----------
+// Calling the jQueryUI Widget Factory Method
+$.widget("an.example", example);
+              </code>
+          </pre>
+          </li>
       </section>
       <section data-bespoke-state="pre-progress clean color concave" class="font">
-        <h2>Or...</h2>
+        <h2>Can you see the pattern?</h2>
+        <li data-bespoke-bullet></li>
+        <li data-bespoke-bullet>
+          It is a bit overkill to create a new file for each method
+        </li>
+        <li data-bespoke-bullet>
+          <span class="bold">Make logical modular design decisions</span>
+        </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color concave" class="font">
+        <h2 class="smaller-header">Are There Alternatives To The Widget Factory?</h2>
+        <li data-bespoke-bullet></li>
+        <li data-bespoke-bullet>
+          Now that you mention it...
+        </li>
+        <li data-bespoke-bullet>
+          I would like to officially release <span class="bold">jqfactory</span>
+        </li>
       </section>
       <section data-bespoke-state="pre-progress clean color coverflow" class="font">
-        <h2>How about...</h2>
+        <img src="imgs/constructionhat.png" alt="" title="jQueryUI Widget Factory" class="float-left margin-left">
+        <h2 data-bespoke-bullet class="float-left margin-left">jqfactory</h2>
+        <div class="bullet-grouping clear jquery-widget-factory">
+          <li data-bespoke-bullet>
+            Inspired by the jQueryUI Widget Factory
+          </li>
+          <li data-bespoke-bullet>
+            Supports jQuery prototype namespacing
+          </li>
+          <li data-bespoke-bullet>
+            Includes an elegant, promises-based, solution for asynchronous initializations
+          </li>
+          <li data-bespoke-bullet>
+            Automatic event binding
+          </li>
+        </div>
       </section>
       <section data-bespoke-state="pre-progress clean color coverflow" class="font">
         <h2>Coverflow?</h2>
@@ -205,41 +249,6 @@ example._create = function() {
             };
           </code>
         </pre>
-      </section>
-      <section data-bespoke-state="clean color simple progress" class="font">
-        <h2>Whoosh.</h2>
-      </section>
-      <section data-bespoke-state="clean color simple progress" class="font">
-        <h2 data-bespoke-bullet>Bespoke.js Events</h2>
-        <ul>
-          <li data-bespoke-bullet>activate</li>
-          <li data-bespoke-bullet>deactivate</li>
-          <li data-bespoke-bullet>next</li>
-          <li data-bespoke-bullet>prev</li>
-          <li data-bespoke-bullet>slide</li>
-        </ul>
-      </section>
-      <section data-bespoke-state="clean color simple progress" class="font">
-        <h2 data-bespoke-bullet>Robust Plugin System</h2>
-        <ul>
-          <li data-bespoke-bullet>Return false to cancel events</li>
-          <li data-bespoke-bullet>Write intercepting plugins</li>
-        </ul>
-      </section>
-      <section data-bespoke-state="clean color simple progress" class="font">
-        <h2>Lessons</h2>
-      </section>
-      <section data-bespoke-state="clean color simple progress" class="font">
-        <h2 data-bespoke-bullet>Writing a library?</h2>
-        <ul>
-          <li data-bespoke-bullet>Tiny, extendable core</li>
-          <li data-bespoke-bullet>Plugins, even for common functionality</li>
-          <li data-bespoke-bullet>Modern browser features + polyfills</li>
-        </ul>
-      </section>
-      <section data-bespoke-state="clean color simple progress" class="font">
-        <h2 data-bespoke-bullet>Making a presentation?</h2>
-        <h3 data-bespoke-bullet>Do it yourself.</h3>
       </section>
       <section data-bespoke-state="clean color simple progress" class="font">
         <img src="img/profile.jpg">
