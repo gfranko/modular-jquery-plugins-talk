@@ -38,7 +38,7 @@
         </div>
       </section>
       <section data-bespoke-state="pre-progress clean color simple" class="font">
-        <h2 data-bespoke-bullet class="">Inspiration</h2>
+        <h2 data-bespoke-bullet class="">Inspiration For This Talk</h2>
         <div class="inspiration-images">
           <li data-bespoke-bullet>
             <img src="imgs/requirejs.png" alt="" title="RequireJS">
@@ -138,6 +138,7 @@ $.widget("an.example", {
   _create: function(internal) {}
   // Custom method we added to our plugin instance
   customMethod: function() {}
+  // The rest of your plugin goes here
 });
               </code>
           </pre>
@@ -294,15 +295,15 @@ $.widget("an.example", example);
         options: {
             occupation: 'JavaScript Engineer'
         },
-        // Plugin Constructor
+        // Plugin Constructor (called first)
         _create: function() {},
-        // Dom manipulation goes here
+        // Dom manipulation goes here (called second)
         _render: function() {},
-        // Plugin event bindings
+        // Plugin event bindings (called third)
         _events: {
             'click': function() {}
         },
-        // All event listeners are now bound
+        // All event listeners are now bound (called last)
         _postevents: function() {}
     });
               </code>
@@ -359,7 +360,6 @@ module.exports = function(grunt) {
     fileToBuild = baseFilePath + 'jquery.customBuild.js';
   // Our Grunt configuration
   grunt.initConfig({
-    // The Grunt concat plugin will be helping us out
     concat: {
       dist: {
         src: '<%= customBuild.files %>',
