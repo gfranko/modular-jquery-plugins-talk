@@ -16,6 +16,7 @@
           <img src="imgs/constructionhat.png" alt="" title="jqfactory">
           <img src="imgs/grunt.jpeg" alt="" title="Grunt">
         </div>
+        Slides: <a href="http://gregfranko.com/modular-jquery-plugins-talk/">http://gregfranko.com/modular-jquery-plugins-talk/</a>
       </section>
       <section data-bespoke-state="pre-progress clean" class="font no-color">
         <img src="imgs/gregfranko.jpeg" alt="" title="Greg Franko" class="profilepic">
@@ -36,13 +37,31 @@
         </div>
       </section>
       <section data-bespoke-state="pre-progress clean color simple" class="font">
-        <h2 data-bespoke-bullet class="">Inspirations</h2>
+        <h2 data-bespoke-bullet class="">Inspiration</h2>
         <div class="inspiration-images">
           <li data-bespoke-bullet>
-            <img src="imgs/nodejs.png" alt="" title="NodeJS and CommonJS">
-          </li>
-          <li data-bespoke-bullet>
             <img src="imgs/requirejs.png" alt="" title="RequireJS">
+          </li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color simple" class="font">
+        <h2 data-bespoke-bullet class="smaller-header">Example Require.js Module</h2>
+        <div class="inspiration-images">
+          <li data-bespoke-bullet>
+            <pre>
+              <code data-language="javascript">
+// Options Module
+// --------------
+// The define method is passed a JavaScript function
+define(function () {
+  // Returns an object literal with our options
+  return {
+    showEffect: 'fadeIn',
+    hideEffect: 'slideUp'
+  }
+});
+              </code>
+          </pre>
           </li>
         </div>
       </section>
@@ -149,36 +168,38 @@ $.widget("an.example", {
             Separate our plugin into independent pieces
         </li>
         <li data-bespoke-bullet>
-            Create a build process to bring everything together
+            Create a command-line build process
+        </li>
+        <li data-bespoke-bullet>
+            Create a web build process
         </li>
       </section>
-      <section data-bespoke-state="pre-progress clean color cards" class="font">
-        <h2 data-bespoke-bullet>Let's Create Our First File!</h2>
-          <li data-bespoke-bullet>
-            <span class="bold">This file will hold our default options</span>
-            <pre>
-<code data-language="javascript">
-// options.js
-// ----------
-var example = example || {};
-example.options = {
-  someOption: true
-};
-              </code>
-          </pre>
-          </li>
-      </section>
       <section data-bespoke-state="pre-progress clean color concave" class="font">
-        <h2 data-bespoke-bullet>On To The Next File!</h2>
+        <h2 data-bespoke-bullet>Let's Create Our First File!</h2>
           <li data-bespoke-bullet>
             <span class="bold">This file will hold our plugin constructor function</span>
             <pre>
 <code data-language="javascript">
 // _create.js
 // ----------
-var example = example || {};
+var example = {};
 example._create = function() {
   // Our constructor logic goes here
+};
+              </code>
+          </pre>
+          </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+        <h2 data-bespoke-bullet>On To The Next File!</h2>
+          <li data-bespoke-bullet>
+            <span class="bold">This file will hold our default options</span>
+            <pre>
+<code data-language="javascript">
+// options.js
+// ----------
+example.options = {
+  someOption: true
 };
               </code>
           </pre>
@@ -224,11 +245,15 @@ $.widget("an.example", example);
           <div class="bold">What We Still Need To Do:</div>
         </li>
         <li data-bespoke-bullet>
-            Create a build process to bring everything together
+            Create a command-line build process
+        </li>
+        <li data-bespoke-bullet>
+            Create a web build process
         </li>
       </section>
       <section data-bespoke-state="pre-progress clean color concave" class="font">
         <h2 class="smaller-header slide-header">Before We Review the Build Process...</h2>
+        <li data-bespoke-bullet></li>
         <li data-bespoke-bullet>Let's Answer a Common Question</li>
         <li data-bespoke-bullet><span class="bold">Are There Alternatives To The Widget Factory?</span></li>
         <li data-bespoke-bullet>
@@ -260,7 +285,8 @@ $.widget("an.example", example);
         <h2 data-bespoke-bullet>Example jqfactory Plugin</h2>
           <li data-bespoke-bullet>
             <pre class="jqfactory-example">
-<code data-language="javascript">// Calling the jqfactory Method
+<code data-language="javascript">
+    // Calling the jqfactory Method
    $.jqfactory('person.greg', {
         // Default plugin options
         options: {
@@ -280,6 +306,16 @@ $.widget("an.example", example);
               </code>
           </pre>
           </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <h2 data-bespoke-bullet class="smaller-header slide-header">jQueryUI Widget Factory or jfactory?</h2>
+        <div class="bullet-grouping clear jquery-widget-factory">
+          <li data-bespoke-bullet><span class="bold">It depends</span></li>
+          <li data-bespoke-bullet>Both are great solutions with fundamental differences</li>
+          <li data-bespoke-bullet><span class="bold">Important Note:</span></li>
+          <li data-bespoke-bullet>jQueryUI Widget Factory is battle tested</li>
+          <li data-bespoke-bullet>jqfactory is new</li>
+        </div>
       </section>
       <section data-bespoke-state="pre-progress clean color coverflow" class="font">
         <h2 data-bespoke-bullet class="smaller-header slide-header">We Won't Be Reviewing jqfactory In Detail...</h2>
@@ -311,9 +347,9 @@ $.widget("an.example", example);
         </div>
       </section>
       <section data-bespoke-state="pre-progress clean color coverflow" class="font">
-        <h2 data-bespoke-bullet>Creating Our Gruntfile Part 1</h2>
+        <h2 data-bespoke-bullet class="smaller-header">Creating Our Gruntfile Part 1</h2>
           <li data-bespoke-bullet>
-            <pre class="jqfactory-example">
+            <pre class="gruntfile-example">
 <code data-language="javascript">
 // Gruntfile.js
 module.exports = function(grunt) {
@@ -327,9 +363,16 @@ module.exports = function(grunt) {
         src: '<%= customBuild.files %>',
         dest: fileToBuild
       }
+    },
+    wrap: {
+      modules: {
+        src: [fileToBuild],
+        wrapper: [';(function($, undefined) {\n', '\n}(jQuery));']
+      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-wrap');
   // Our custom task will go here next
 }
               </code>
@@ -337,15 +380,14 @@ module.exports = function(grunt) {
           </li>
       </section>
       <section data-bespoke-state="pre-progress clean color coverflow" class="font">
-        <h2 data-bespoke-bullet>Creating Our Gruntfile Part 2</h2>
+        <h2 data-bespoke-bullet class="smaller-header">Creating Our Gruntfile Part 2</h2>
           <li data-bespoke-bullet>
-            <pre class="grunt-example">
+            <pre class="gruntfile-example">
 <code data-language="javascript">
 // Registers a default Grunt Task
 grunt.registerTask('customBuild', 'customBuild task', function() {
   var defaultFiles = ['options', '_create', '_plugin', 'customMethod'],
     args = this.args, customFiles = [], index, i = -1;
-
   // Loops through and excludes any file that was passed
   if(args.length) {
     while(++i < args.length) {
@@ -360,11 +402,76 @@ grunt.registerTask('customBuild', 'customBuild task', function() {
   // Sets a Grunt configuration variable
   grunt.config.set('customBuild.files', customFiles);
   // Run's the Grunt concat plugin
-  grunt.task.run('concat');
+  grunt.task.run('concat', 'wrap');
 });
               </code>
           </pre>
           </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <h2 data-bespoke-bullet>Running Our Custom Build</h2>
+        <li data-bespoke-bullet>
+          <span class="bold">On The Command Line:</span>
+          <pre>
+            <code data-language="javascript">
+            grunt customBuild:customMethod
+            </code>
+          </pre>
+        </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <li data-bespoke-bullet>
+          <h2>Success!</h2>
+          <img src="imgs/gruntcustombuild.png" alt="" title="Grunt Custom Build" class="grunt-custom-build">
+        </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+      <h2 data-bespoke-bullet>Plugin Source Code</h2>
+          <li data-bespoke-bullet>
+            <pre class="gruntfile-example">
+<code data-language="javascript">
+;(function($, undefined) {
+// options.js
+// ----------
+var example = {};
+example.options = {
+  someOption: true
+};
+// _create.js
+// ----------
+example._create = function() {
+  // Our constructor logic goes here
+};
+// _plugin.js
+// ----------
+// Calling the jQueryUI Widget Factory Method
+$.widget("an.example", example);
+}(jQuery));
+              </code>
+          </pre>
+          </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+        <h2 class="smaller-header slide-header">Let's Review The State Of Our Plugin</h2>
+        <li data-bespoke-bullet></li>
+        <li data-bespoke-bullet>
+          <div class="bold">What We Have Done:</div>
+        </li>
+        <li data-bespoke-bullet>
+          Removed the jQuery plugin boilerplate
+        </li>
+        <li data-bespoke-bullet>
+            Separated our plugin into independent pieces
+        </li>
+        <li data-bespoke-bullet>
+            Created a command-line build process
+        </li>
+        <li data-bespoke-bullet>
+          <div class="bold">What We Still Need to Do:</div>
+        </li>
+        <li data-bespoke-bullet>
+            Create a web build process
+        </li>
       </section>
       <section data-bespoke-state="clean color simple progress" class="font">
         <h2 data-bespoke-bullet>Thank You!</h2>
