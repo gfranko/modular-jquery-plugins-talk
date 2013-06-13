@@ -519,3 +519,22 @@ article  pre {
   width: 600px;
   height: 220px;
 }
+.downloadbuilder-img {
+  height: 80px;
+}
+.downloadbuilder-page-img {
+  width: 150px !important;
+}
+.downloadbuilder-example {
+  font-size: 15px;
+  line-height: 22px;
+  padding-left: 25px;
+}
+.downloadbuilder-example2 {
+  font-size: 16px;
+  line-height: 22px;
+  padding-left: 50px;
+}
+.small-font {
+  font-size: 24px;
+}

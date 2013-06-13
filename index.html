@@ -15,6 +15,7 @@
           <img src="imgs/jqueryui.png" alt="" title="jQueryUI Widget Factory">
           <img src="imgs/constructionhat.png" alt="" title="jqfactory">
           <img src="imgs/grunt.jpeg" alt="" title="Grunt">
+          <img src="imgs/downloadbuilder.png" alt="" title="DownloadBuilder" class="downloadbuilder-img">
         </div>
         Slides: <a href="http://gregfranko.com/modular-jquery-plugins-talk/">http://gregfranko.com/modular-jquery-plugins-talk/</a>
       </section>
@@ -175,32 +176,32 @@ $.widget("an.example", {
             Create a web build process
         </li>
       </section>
-      <section data-bespoke-state="pre-progress clean color concave" class="font">
-        <h2 data-bespoke-bullet>Let's Create Our First File!</h2>
-          <li data-bespoke-bullet>
-            <span class="bold">This file will hold our plugin constructor function</span>
-            <pre>
-<code data-language="javascript">
-// _create.js
-// ----------
-var example = {};
-example._create = function() {
-  // Our constructor logic goes here
-};
-              </code>
-          </pre>
-          </li>
-      </section>
       <section data-bespoke-state="pre-progress clean color cards" class="font">
-        <h2 data-bespoke-bullet>On To The Next File!</h2>
+        <h2 data-bespoke-bullet>Let's Create Our First File!</h2>
           <li data-bespoke-bullet>
             <span class="bold">This file will hold our default options</span>
             <pre>
 <code data-language="javascript">
 // options.js
 // ----------
+var example = {};
 example.options = {
   someOption: true
+};
+              </code>
+          </pre>
+          </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color concave" class="font">
+        <h2 data-bespoke-bullet>On To The Next File!</h2>
+          <li data-bespoke-bullet>
+            <span class="bold">This file will hold our plugin constructor function</span>
+            <pre>
+<code data-language="javascript">
+// _create.js
+// ----------
+example._create = function() {
+  // Our constructor logic goes here
 };
               </code>
           </pre>
@@ -309,7 +310,7 @@ $.widget("an.example", example);
           </li>
       </section>
       <section data-bespoke-state="pre-progress clean color coverflow" class="font">
-        <h2 data-bespoke-bullet class="smaller-header slide-header">jQueryUI Widget Factory or jfactory?</h2>
+        <h2 data-bespoke-bullet class="smaller-header slide-header">jQueryUI Widget Factory or jqfactory?</h2>
         <div class="bullet-grouping clear jquery-widget-factory">
           <li data-bespoke-bullet><span class="bold">It depends</span></li>
           <li data-bespoke-bullet>Both are great solutions with fundamental differences</li>
@@ -415,6 +416,20 @@ grunt.registerTask('customBuild', 'customBuild task', function() {
           <span class="bold">On The Command Line:</span>
           <pre>
             <code data-language="javascript">
+            grunt customBuild
+            </code>
+          </pre>
+        </li>
+        <li data-bespoke-bullet>
+          <span class="bold">This would include all of our files</span>
+        </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color coverflow" class="font">
+        <h2 data-bespoke-bullet>Excluding a File In Your Build</h2>
+        <li data-bespoke-bullet>
+          <span class="bold">On The Command Line:</span>
+          <pre>
+            <code data-language="javascript">
             grunt customBuild:customMethod
             </code>
           </pre>
@@ -474,12 +489,121 @@ $.widget("an.example", example);
             Create a web build process
         </li>
       </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+        <h2 data-bespoke-bullet class="">Web Custom Build</h2>
+        <div class="inspiration-images">
+          <li data-bespoke-bullet>
+            With DownloadBuilder.js!
+          </li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+        <img src="imgs/downloadbuilder.png" alt="" title="jQueryUI Widget Factory" class="float-left margin-left downloadbuilder-page-img">
+        <h2 data-bespoke-bullet class="float-left margin-left">DownloadBuilder.js</h2>
+        <div class="bullet-grouping clear margin-left">
+          <li data-bespoke-bullet>
+            Fetches and Concatenates Files From Github
+          </li>
+          <li data-bespoke-bullet>
+            Saves files using the HTML5 FileSystem API
+          </li>
+          <li data-bespoke-bullet>
+            Supports caching via HTML5 Session Storage
+          </li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+      <h2 data-bespoke-bullet>First Step</h2>
+          <li data-bespoke-bullet>
+            <span class="bold">Create your HTML</span>
+          </li>
+          <li data-bespoke-bullet>
+            <pre class="downloadbuilder-example">
+<code data-language="html">
+<input class="hidden" checked="checked" type="checkbox" value="src/js/options.js">
+<input class="hidden" checked="checked" type="checkbox" value="src/js/_create.js">
+<input class="hidden" checked="checked" type="checkbox" value="src/js/_plugin.js">
+<input class="visible" type="checkbox" value="src/js/customMethod.js">
+              </code>
+          </pre>
+          </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+      <h2 data-bespoke-bullet>Second Step</h2>
+          <li data-bespoke-bullet>
+            <span class="bold">Create a builder instance</span>
+          </li>
+          <li data-bespoke-bullet>
+            <pre class="downloadbuilder-example2">
+<code data-language="javascript">
+                  var builder = new DownloadBuilder({
+                    location: 'github',
+                    author: 'gfranko',
+                    repo: 'jquery.examplePlugin.js',
+                    branch: 'master',
+                    cache: true,
+                    client_id: '',
+                    client_secret: ''
+                  });
+              </code>
+          </pre>
+          </li>
+          <li data-bespoke-bullet>
+            Sorry, you have to use the new keyword
+          </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+      <h2 data-bespoke-bullet>Final Step</h2>
+          <li data-bespoke-bullet>
+            <span class="bold">Build Your File</span>
+          </li>
+          <li data-bespoke-bullet>
+            <pre class="downloadbuilder-example2">
+<code data-language="javascript">
+$('#generate-button').on('click', function() {
+  var checkedBoxes = $('#js-files:checked'),
+    fileName = 'jquery.examplePlugin.custom.js',
+    language = 'javascript';
+
+  builder.buildURL(checkedBoxes, fileName, language, function(data) {
+    /*
+    file - data.content
+    file url - data.url
+    file name - data.fileName
+    file language - data.lang
+    */
+  });
+
+});
+              </code>
+          </pre>
+          </li>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+        <h2 data-bespoke-bullet class="">Live Example</h2>
+        <div class="inspiration-images">
+          <li data-bespoke-bullet>
+            <a href="http://gregfranko.com/jquery.selectBoxIt.js/customDownload.html" class="small-font">http://gregfranko.com/jquery.selectBoxIt.js/customDownload.html</a>
+          </li>
+        </div>
+      </section>
+      <section data-bespoke-state="pre-progress clean color cards" class="font">
+        <h2 data-bespoke-bullet class="">Closing Thoughts</h2>
+        <div class="inspiration-images">
+          <li data-bespoke-bullet>
+            JavaScript Is Finally Being Taken Seriously
+          </li>
+          <li data-bespoke-bullet>
+            <span class="bold">jQuery Plugins Should Be Too</span>
+          </li>
+        </div>
+      </section>
       <section data-bespoke-state="clean color simple progress" class="font">
-        <h2 data-bespoke-bullet>Thank You!</h2>
-        <li data-bespoke-bullet>
+        <h2>Thank You!</h2>
+        <li>
           <span class="bold">Github: </span> @gfranko
         </li>
-        <li data-bespoke-bullet>
+        <li>
           <span class="bold">Twitter: </span> @gregfranko
         </li>
       </section>
